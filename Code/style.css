@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #F3F3F3;
+    color: #222;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #218380;
+    padding: 15px 40px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.logo {
+    color: #F3F3F3;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu a {
+    color: #F3F3F3;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.menu a:hover,
+.menu .active {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.content {
+    padding: 40px;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 2.5rem;
+    color: #218380;
+    margin-bottom: 25px;
+}
+
+.center-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-grid {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.topic-card {
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #222;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.topic-card:nth-child(1) { background: #FFBC42; }
+.topic-card:nth-child(2) { background: #D81159; }
+.topic-card:nth-child(3) { background: #8F2D56; }
+.topic-card:nth-child(4) { background: #218380; }
+.topic-card:nth-child(5) { background: #73D2DE; }
+
+.topic-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 4px solid rgba(255,255,255,0.5);
+}
+
+.topic-card h2 {
+    padding: 15px;
+    font-size: 1.4rem;
+    color: #F3F3F3;
+}
+
+.topic-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
