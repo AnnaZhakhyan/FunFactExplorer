@@ -86,6 +86,10 @@ body {
 .topic-card:nth-child(3) { background: #8F2D56; }
 .topic-card:nth-child(4) { background: #218380; }
 .topic-card:nth-child(5) { background: #73D2DE; }
+.topic-card:nth-child(6) { background: #FFBC42; }
+.topic-card:nth-child(7) { background: #D81159; }
+
+
 
 .topic-card img {
     width: 100%;
