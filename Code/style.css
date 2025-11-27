@@ -57,6 +57,11 @@ body {
     margin-bottom: 25px;
 }
 
+.content h2{
+    font-size: 1.4rem;
+    color: #218380;
+}
+
 .center-cards {
     display: flex;
     flex-direction: column;
@@ -88,6 +93,7 @@ body {
 .topic-card:nth-child(5) { background: #73D2DE; }
 .topic-card:nth-child(6) { background: #FFBC42; }
 .topic-card:nth-child(7) { background: #D81159; }
+.topic-card:nth-child(8) { background: #73D2DE; }
 
 
 
