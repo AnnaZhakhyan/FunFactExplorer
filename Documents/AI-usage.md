@@ -7,3 +7,5 @@
    This prompt helps with the general decision regarding the topic of the website. We believe that AI can really help when it comes to creativity and idea generation.
 #### 2. I want to make a fun fact explorer website in html and css, which structure for it would you suggest?
    This prompt asks ChatGPT about a more convenient structure for the website without directly asking it for specific code. This is convenient for the programmer because it provides standard based code and allows them to work on more specicifc features.
+#### 3. Make this page better looking and feel more user-friendly please.
+   I think one of the best things you can use AI for is web design, and this prompt is a great example of how it can help improve the process of web development by making working pages more adapted to users.
