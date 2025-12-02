@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+    <body class="water-bg"> 
+        <!-- the changing wave background -->
 
-   <nav class="topbar">
+    <nav class="topbar">
         <div class="logo">Fun Fact Explorer</div>
         <ul class="menu">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="ocean.html">Ocean</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="ocean.html" class="active">Ocean</a></li>
             <li><a href="animals.html">Animals</a></li>
             <li><a href="space.html">Space</a></li>
             <li><a href="languages.html">Languages</a></li>
@@ -24,11 +25,75 @@
             <li><a href="science.html">Science</a></li>
         </ul>
     </nav>
+    <!-- video at the top  -->
+    <div class="video"> 
+        <video autoplay muted loop playsinline>
+            <source src="videos/ocean.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+
+
+    <header class="hero ocean-hero">
+        <div class="hero-text">
+            <h1>The Ocean</h1>
+            <p>Discover the deepest, bluest, wildest facts!</p>
+        </div>
+    </header>
 
     <main class="content">
-        <h1>Ocean</h1>
-        <p>Ocean facts maybe?</p>
+
+        <section class="intro">
+            <h2>Explore Ocean Fun Facts</h2>
+            <p>Dive into surprising, weird, mysterious and beautiful facts about the ocean.</p>
+        </section>
+
+        <!-- cards with the facts -->
+        <section class="fact-card-grid">
+            <div class="fact-card">
+                <img src="images/ocean-fact1.jpg" alt="Turtle">
+                <!-- please keep to this image naming (theme-fact1) -->
+                <h3>Fact 1</h3>
+                <p>Placeholder ocean fact text goes here.</p>
+            </div>
+
+            <div class="fact-card">
+                <img src="images/ocean-fact2.jpg" alt="Starfish">
+
+                <h3>Fact 2</h3>
+                <p>Placeholder ocean fact text goes here.</p>
+            </div>
+
+            <div class="fact-card">
+                <img src="images/ocean-fact3.jpg" alt="Ocean fact">
+
+                <h3>Fact 3</h3>
+
+                <p>Placeholder ocean fact text goes here.</p>
+            </div>
+        </section>
+
+        <section class="did-you-know">
+            <h2>Did You Know?</h2>
+            <p id="fact-slider-text">Loading fun ocean fact...</p>
+        </section>
+        <section class="fact-game">
+            <h2>Real or Fake?</h2>
+        
+            <p id="game-question">Which fact is REAL?</p>
+        
+            <div class="fact-options">
+                <button id="optionA" class="fact-btn">Loading...</button>
+                <button id="optionB" class="fact-btn">Loading...</button>
+            </div>
+        
+            <p id="game-result"></p>
+        </section>
+        
+
     </main>
+    <script src="script.js"></script>
 
 </body>
 

@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="space-bg">
 
-   <nav class="topbar">
+    <!-- NAVBAR -->
+    <nav class="topbar">
         <div class="logo">Fun Fact Explorer</div>
         <ul class="menu">
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="ocean.html">Ocean</a></li>
             <li><a href="animals.html">Animals</a></li>
-            <li><a href="space.html">Space</a></li>
+            <li><a href="space.html" class="active">Space</a></li>
             <li><a href="languages.html">Languages</a></li>
             <li><a href="history.html">History</a></li>
             <li><a href="geography.html">Geography</a></li>
@@ -25,10 +26,54 @@
         </ul>
     </nav>
 
+    <!-- video banner -->
+    <div class="video">
+        <video autoplay muted loop playsinline>
+            <source src="videos/space.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <header class="hero space-hero">
+        <div class="hero-text">
+            <h1>Outer Space</h1>
+            <p>Explore the mysteries of the universe!</p>
+        </div>
+    </header>
+
     <main class="content">
-        <h1>Space</h1>
-        <p>Space facts maybe?</p>
+
+        <section class="intro">
+            <h2>Explore Space Fun Facts</h2>
+            <p>Blast off into mind-bending facts about planets, stars, galaxies, and beyond.</p>
+        </section>
+
+        <!-- fact cards -->
+        <section class="fact-card-grid">
+            <div class="fact-card">
+                <h3>Fact 1</h3>
+                <p>Placeholder space fact text goes here.</p>
+            </div>
+
+            <div class="fact-card">
+                <h3>Fact 2</h3>
+                <p>Placeholder space fact text goes here.</p>
+            </div>
+
+            <div class="fact-card">
+                <h3>Fact 3</h3>
+                <p>Placeholder space fact text goes here.</p>
+            </div>
+        </section>
+
+        <section class="did-you-know">
+            <h2>Did You Know?</h2>
+            <p id="fact-slider-text">Loading fun space fact...</p>
+        </section>
+        need to connect this to an API and change it to space facts, but i put default ocean facts there for now
+
     </main>
+    <script src="script.js"></script>
 
 </body>
 
