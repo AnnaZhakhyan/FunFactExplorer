@@ -6,14 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Science - Fun Fact Explorer</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .did-you-know {
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    color: #fff; /* ensure text is visible */
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: rgba(98, 64, 64, 0.4); /* optional semi-transparent bg */
+}
+    </style>
 </head>
 
-<body>
+<body class="science-bg">
 
-   <nav class="topbar">
+    <nav class="topbar">
         <div class="logo">Fun Fact Explorer</div>
         <ul class="menu">
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="ocean.html">Ocean</a></li>
             <li><a href="animals.html">Animals</a></li>
             <li><a href="space.html">Space</a></li>
@@ -21,14 +32,162 @@
             <li><a href="history.html">History</a></li>
             <li><a href="geography.html">Geography</a></li>
             <li><a href="mythology.html">Mythology</a></li>
-            <li><a href="science.html">Science</a></li>
+            <li><a href="science.html" class="active">Science</a></li>
         </ul>
     </nav>
 
+    <!-- video hero -->
+    <div class="video">
+        <video autoplay muted loop playsinline>
+            <source src="videos/science.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <header class="hero science-hero">
+        <div class="hero-text">
+            <h1>Science</h1>
+            <p>Explore weird, mind-blowing science facts!</p>
+        </div>
+    </header>
+
     <main class="content">
-        <h1>Science</h1>
-        <p>Science facts maybe?</p>
+
+        <section class="intro">
+            <h2>Explore Science Fun Facts</h2>
+            <p>Discover crazy experiments, strange physics, and unbelievable scientific truths.</p>
+        </section>
+
+        <!-- fact cards grid -->
+        <section class="fact-card-grid">
+
+            <div class="fact-card">
+                <img src="images/atoms.webp" alt="Atoms">
+                <h3>Fact 1</h3>
+                <p>Lightning is five times hotter than the surface of the Sun.</p>
+            </div>
+
+            <div class="fact-card">
+                <img src="images/electricity.jpg" alt="Electricity">
+                <h3>Fact 2</h3>
+                <p>Bananas are naturally radioactive.</p>
+            </div>
+
+            <div class="fact-card">
+                <img src="images/dna.webp" alt="DNA">
+                <h3>Fact 3</h3>
+                <p>A teaspoon of a neutron star weighs about 4 billion tons.</p>
+            </div>
+
+        </section>
+
+        <!-- Did You Know slider -->
+        <section class="did-you-know">
+            <h2>Did You Know?</h2>
+            <p id="fact-slider-text-science">Loading fun science fact...</p>
+        </section>
+
+        <!-- Real or Fake game -->
+        <section class="fact-game">
+            <h2>Real or Fake?</h2>
+            <p id="game-question-science">Which science fact is REAL?</p>
+
+            <div class="fact-options">
+                <button id="science-optionA" class="fact-btn">Loading...</button>
+                <button id="science-optionB" class="fact-btn">Loading...</button>
+            </div>
+
+            <p id="science-game-result"></p>
+        </section>
+
     </main>
+
+    <!-- inline JS -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+        const scienceFacts = [
+            "Lightning is five times hotter than the surface of the Sun.",
+            "Bananas are naturally radioactive.",
+            "A teaspoon of a neutron star weighs about 4 billion tons.",
+            "There are more stars in the universe than grains of sand on Earth.",
+            "Water can boil and freeze at the same time (triple point)."
+        ];
+
+        const scienceRealFacts = [
+            "Humans share 60% of their DNA with bananas.",
+            "Honey never spoils — archaeologists found 3000-year-old honey still edible.",
+            "You can start a fire with ice if shaped into a lens.",
+            "Some metals explode when they touch water."
+        ];
+
+        const scienceFakeFacts = [
+            "The Sun is actually cold inside.",
+            "Humans only use 2% of their brain.",
+            "Rocks can breathe underwater.",
+            "Gravity turns off for 10 minutes every month."
+        ];
+
+        let sciIndex = 0;
+
+        function updateScienceFact() {
+            const factBox = document.getElementById("fact-slider-text-science");
+            if (factBox) {
+                factBox.textContent = scienceFacts[sciIndex];
+                sciIndex = (sciIndex + 1) % scienceFacts.length;
+            }
+        }
+
+        setInterval(updateScienceFact, 3000);
+        updateScienceFact(); // show first fact immediately
+
+        function startScienceGame() {
+            const A = document.getElementById("science-optionA");
+            const B = document.getElementById("science-optionB");
+            const result = document.getElementById("science-game-result");
+            if (!A || !B || !result) return;
+
+            A.className = "fact-btn";
+            B.className = "fact-btn";
+            result.textContent = "";
+
+            const real = scienceRealFacts[Math.floor(Math.random() * scienceRealFacts.length)];
+            const fake = scienceFakeFacts[Math.floor(Math.random() * scienceFakeFacts.length)];
+            const realOnA = Math.random() < 0.5;
+
+            A.textContent = realOnA ? real : fake;
+            B.textContent = realOnA ? fake : real;
+
+            A.disabled = false;
+            B.disabled = false;
+
+            A.onclick = () => checkScience(realOnA, A, B);
+            B.onclick = () => checkScience(!realOnA, B, A);
+        }
+
+        function checkScience(correct, chosen, other) {
+            const result = document.getElementById("science-game-result");
+            if (!result) return;
+
+            if (correct) {
+                chosen.classList.add("correct");
+                result.textContent = "Correct!";
+            } else {
+                chosen.classList.add("wrong");
+                other.classList.add("correct");
+                result.textContent = "Wrong!";
+            }
+
+            chosen.disabled = true;
+            other.disabled = true;
+
+            setTimeout(startScienceGame, 2000);
+        }
+
+        startScienceGame();
+
+    });
+    </script>
 
 </body>
 

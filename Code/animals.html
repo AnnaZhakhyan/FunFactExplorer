@@ -6,16 +6,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animals - Fun Fact Explorer</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+ /* Main container */
+.animals-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    padding: 20px;
+}
+
+/* Title */
+.animals-title {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* Card box */
+.animal-card {
+    width: 480px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    text-align: center;
+    animation: fadeIn 0.7s ease;
+}
+
+/* Fancy button */
+.fancy-btn {
+    background: linear-gradient(135deg, #6a9ae2, #4977d0);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 1.25rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.35s ease;
+    box-shadow: 0 8px 20px rgba(80,120,200,0.25);
+}
+
+.fancy-btn:hover {
+    background: linear-gradient(135deg, #83b3ff, #5f8ae8);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(80,120,200,0.35);
+}
+
+.fancy-btn:active {
+    transform: scale(0.96);
+}
+
+/* Fact box */
+.fact-box {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    min-height: 70px;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.fact-box.show {
+    opacity: 1;
+}
+
+/* Image styling */
+.animal-image {
+    margin-top: 20px;
+    max-width: 280px;
+    border-radius: 16px;
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease, transform 0.5s ease;
+}
+
+.animal-image.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+.animal-image {
+    margin: 20px auto 0 auto;  /* Centers the image */
+    display: none;
+    opacity: 0;
+    max-width: 280px;
+    border-radius: 16px;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease, transform 0.5s ease;
+}
+
+.animal-image.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fade animation for card */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+    </style>
 </head>
 
 <body>
 
-   <nav class="topbar">
+    <nav class="topbar">
         <div class="logo">Fun Fact Explorer</div>
         <ul class="menu">
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="ocean.html">Ocean</a></li>
-            <li><a href="animals.html">Animals</a></li>
+            <li><a href="animals.html" class="active">Animals</a></li>
             <li><a href="space.html">Space</a></li>
             <li><a href="languages.html">Languages</a></li>
             <li><a href="history.html">History</a></li>
@@ -24,11 +130,93 @@
             <li><a href="science.html">Science</a></li>
         </ul>
     </nav>
+<main class="animals-container">
 
-    <main class="content">
-        <h1>Animals</h1>
-        <p>Animals facts maybe?</p>
-    </main>
+    <h1 class="animals-title">🐾 Random Animal Fun Fact</h1>
+
+    <div class="animal-card">
+
+        <button onclick="getRandomAnimalFact()" class="fancy-btn">
+            Get Animal Fact
+        </button>
+
+        <p id="fact-box" class="fact-box">
+            Click the button to get an animal fact!
+        </p>
+
+        <img id="animalImg" class="animal-image" src="">
+    </div>
+
+</main>
+
+
+<script>
+const animals = ["dog", "cat", "fox", "panda", "koala"];
+
+// Working API sources for each animal
+const animalAPIs = {
+    dog: {
+        image: "https://dog.ceo/api/breeds/image/random",
+        fact: "https://some-random-api.com/animal/dog"
+    },
+    cat: {
+        image: "https://api.thecatapi.com/v1/images/search",
+        fact: "https://catfact.ninja/fact"
+    },
+    fox: {
+        image: "https://randomfox.ca/floof/",
+        fact: "https://some-random-api.com/animal/fox"
+    },
+    panda: {
+        image: "https://some-random-api.com/animal/panda",
+        fact: "https://some-random-api.com/animal/panda"
+    },
+    koala: {
+        image: "https://some-random-api.com/animal/koala",
+        fact: "https://some-random-api.com/animal/koala"
+    }
+};
+
+async function getRandomAnimalFact() {
+    const animal = animals[Math.floor(Math.random() * animals.length)];
+    const factBox = document.getElementById("fact-box");
+    const img = document.getElementById("animalImg");
+
+    factBox.classList.remove("show");
+    img.classList.remove("show");
+
+    try {
+        // Fetch fact
+        let factResponse = await fetch(animalAPIs[animal].fact);
+        let factData = await factResponse.json();
+
+        // Fetch image
+        let imgResponse = await fetch(animalAPIs[animal].image);
+        let imgData = await imgResponse.json();
+
+        // FACT handling
+        const fact = factData.fact || factData.data?.fact || "Cool animal fact!";
+
+        // IMAGE handling depending on API format
+        let imageURL = imgData.message || imgData[0]?.url || imgData.image;
+
+        factBox.innerText = fact;
+        img.src = imageURL;
+        img.style.display = "block";
+
+        setTimeout(() => {
+            factBox.classList.add("show");
+            img.classList.add("show");
+        }, 100);
+
+    } catch (error) {
+        factBox.innerText = "Error loading animal fact 😢";
+        console.error(error);
+    }
+}
+</script>
+
+
 
 </body>
 
