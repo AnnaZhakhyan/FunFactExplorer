@@ -7,114 +7,19 @@
     <title>Animals - Fun Fact Explorer</title>
     <link rel="stylesheet" href="style.css">
     <style>
- /* Main container */
-.animals-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 40px;
-    padding: 20px;
-}
-
-/* Title */
-.animals-title {
-    font-size: 2.6rem;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 25px;
-}
-
-/* Card box */
-.animal-card {
-    width: 480px;
-    background: rgba(255,255,255,0.7);
-    backdrop-filter: blur(12px);
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-    text-align: center;
-    animation: fadeIn 0.7s ease;
-}
-
-/* Fancy button */
-.fancy-btn {
-    background: linear-gradient(135deg, #6a9ae2, #4977d0);
-    color: white;
-    border: none;
-    padding: 14px 28px;
-    font-size: 1.25rem;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.35s ease;
-    box-shadow: 0 8px 20px rgba(80,120,200,0.25);
-}
-
-.fancy-btn:hover {
-    background: linear-gradient(135deg, #83b3ff, #5f8ae8);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(80,120,200,0.35);
-}
-
-.fancy-btn:active {
-    transform: scale(0.96);
-}
-
-/* Fact box */
-.fact-box {
-    font-size: 1.2rem;
-    margin-top: 20px;
-    min-height: 70px;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-}
-
-.fact-box.show {
-    opacity: 1;
-}
-
-/* Image styling */
-.animal-image {
-    margin-top: 20px;
-    max-width: 280px;
-    border-radius: 16px;
-    display: none;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.8s ease, transform 0.5s ease;
-}
-
-.animal-image.show {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-.animal-image {
-    margin: 20px auto 0 auto;  /* Centers the image */
-    display: none;
-    opacity: 0;
-    max-width: 280px;
-    border-radius: 16px;
-    transform: translateY(10px);
-    transition: opacity 0.8s ease, transform 0.5s ease;
-}
-
-.animal-image.show {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Fade animation for card */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(25px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-
+        .did-you-know {
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            color: #fff;
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: rgba(98, 64, 64, 0.4);
+        }
     </style>
 </head>
 
-<body>
+<body class="animals-bg">
 
     <nav class="topbar">
         <div class="logo">Fun Fact Explorer</div>
@@ -130,93 +35,159 @@
             <li><a href="science.html">Science</a></li>
         </ul>
     </nav>
-<main class="animals-container">
 
-    <h1 class="animals-title">🐾 Random Animal Fun Fact</h1>
-
-    <div class="animal-card">
-
-        <button onclick="getRandomAnimalFact()" class="fancy-btn">
-            Get Animal Fact
-        </button>
-
-        <p id="fact-box" class="fact-box">
-            Click the button to get an animal fact!
-        </p>
-
-        <img id="animalImg" class="animal-image" src="">
+    <!-- video hero -->
+    <div class="video">
+        <video autoplay muted loop playsinline>
+            <source src="videos/animal.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
 
-</main>
+    <header class="hero animals-hero">
+        <div class="hero-text">
+            <h1>Animals</h1>
+            <p>Explore wild, funny, and unbelievable animal facts!</p>
+        </div>
+    </header>
 
+    <main class="content">
 
-<script>
-const animals = ["dog", "cat", "fox", "panda", "koala"];
+        <section class="intro">
+            <h2>Explore Animal Fun Facts</h2>
+            <p>Discover strange creatures, crazy behaviors, and jaw-dropping animal abilities.</p>
+        </section>
 
-// Working API sources for each animal
-const animalAPIs = {
-    dog: {
-        image: "https://dog.ceo/api/breeds/image/random",
-        fact: "https://some-random-api.com/animal/dog"
-    },
-    cat: {
-        image: "https://api.thecatapi.com/v1/images/search",
-        fact: "https://catfact.ninja/fact"
-    },
-    fox: {
-        image: "https://randomfox.ca/floof/",
-        fact: "https://some-random-api.com/animal/fox"
-    },
-    panda: {
-        image: "https://some-random-api.com/animal/panda",
-        fact: "https://some-random-api.com/animal/panda"
-    },
-    koala: {
-        image: "https://some-random-api.com/animal/koala",
-        fact: "https://some-random-api.com/animal/koala"
-    }
-};
+        <!-- fact cards grid -->
+        <section class="fact-card-grid">
 
-async function getRandomAnimalFact() {
-    const animal = animals[Math.floor(Math.random() * animals.length)];
-    const factBox = document.getElementById("fact-box");
-    const img = document.getElementById("animalImg");
+            <div class="fact-card">
+                <img src="images/lion.png" alt="Lion">
+                <h3>Fact 1</h3>
+                <p>A lion's roar can be heard from 8 kilometers away.</p>
+            </div>
 
-    factBox.classList.remove("show");
-    img.classList.remove("show");
+            <div class="fact-card">
+                <img src="images/octopus.jpg" alt="Octopus">
+                <h3>Fact 2</h3>
+                <p>An octopus has three hearts and blue blood.</p>
+            </div>
 
-    try {
-        // Fetch fact
-        let factResponse = await fetch(animalAPIs[animal].fact);
-        let factData = await factResponse.json();
+            <div class="fact-card">
+                <img src="images/giraffe.jpg" alt="Giraffe">
+                <h3>Fact 3</h3>
+                <p>A giraffe's tongue is about 45–50 cm long.</p>
+            </div>
 
-        // Fetch image
-        let imgResponse = await fetch(animalAPIs[animal].image);
-        let imgData = await imgResponse.json();
+        </section>
 
-        // FACT handling
-        const fact = factData.fact || factData.data?.fact || "Cool animal fact!";
+        <!-- Did You Know slider -->
+        <section class="did-you-know">
+            <h2>Did You Know?</h2>
+            <p id="fact-slider-text-animals">Loading fun animal fact...</p>
+        </section>
 
-        // IMAGE handling depending on API format
-        let imageURL = imgData.message || imgData[0]?.url || imgData.image;
+        <!-- Real or Fake game -->
+        <section class="fact-game">
+            <h2>Real or Fake?</h2>
+            <p id="game-question-animals">Which animal fact is REAL?</p>
 
-        factBox.innerText = fact;
-        img.src = imageURL;
-        img.style.display = "block";
+            <div class="fact-options">
+                <button id="animals-optionA" class="fact-btn">Loading...</button>
+                <button id="animals-optionB" class="fact-btn">Loading...</button>
+            </div>
 
-        setTimeout(() => {
-            factBox.classList.add("show");
-            img.classList.add("show");
-        }, 100);
+            <p id="animals-game-result"></p>
+        </section>
 
-    } catch (error) {
-        factBox.innerText = "Error loading animal fact 😢";
-        console.error(error);
-    }
-}
-</script>
+    </main>
 
+    <!-- inline JS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
 
+            const animalFacts = [
+                "A snail can sleep for three years.",
+                "Elephants are the only mammals that can't jump.",
+                "A group of flamingos is called a 'flamboyance'.",
+                "Octopuses have three hearts and blue blood.",
+                "Dolphins have names for each other."
+            ];
+
+            const animalRealFacts = [
+                "Koalas sleep up to 22 hours a day.",
+                "Sharks existed before trees.",
+                "Cows have best friends and get stressed when separated.",
+                "Butterflies taste with their feet."
+            ];
+
+            const animalFakeFacts = [
+                "Cats can breathe underwater for 5 minutes.",
+                "Tigers can change colors like chameleons.",
+                "Penguins can fly if they run fast enough.",
+                "Crocodiles sweat through their teeth."
+            ];
+
+            let aniIndex = 0;
+
+            function updateAnimalFact() {
+                const factBox = document.getElementById("fact-slider-text-animals");
+                if (factBox) {
+                    factBox.textContent = animalFacts[aniIndex];
+                    aniIndex = (aniIndex + 1) % animalFacts.length;
+                }
+            }
+
+            setInterval(updateAnimalFact, 3000);
+            updateAnimalFact(); 
+
+            function startAnimalGame() {
+                const A = document.getElementById("animals-optionA");
+                const B = document.getElementById("animals-optionB");
+                const result = document.getElementById("animals-game-result");
+                if (!A || !B || !result) return;
+
+                A.className = "fact-btn";
+                B.className = "fact-btn";
+                result.textContent = "";
+
+                const real = animalRealFacts[Math.floor(Math.random() * animalRealFacts.length)];
+                const fake = animalFakeFacts[Math.floor(Math.random() * animalFakeFacts.length)];
+                const realOnA = Math.random() < 0.5;
+
+                A.textContent = realOnA ? real : fake;
+                B.textContent = realOnA ? fake : real;
+
+                A.disabled = false;
+                B.disabled = false;
+
+                A.onclick = () => checkAnimal(realOnA, A, B);
+                B.onclick = () => checkAnimal(!realOnA, B, A);
+            }
+
+            function checkAnimal(correct, chosen, other) {
+                const result = document.getElementById("animals-game-result");
+                if (!result) return;
+
+                if (correct) {
+                    chosen.classList.add("correct");
+                    result.textContent = "Correct!";
+                } else {
+                    chosen.classList.add("wrong");
+                    other.classList.add("correct");
+                    result.textContent = "Wrong!";
+                }
+
+                chosen.disabled = true;
+                other.disabled = true;
+
+                setTimeout(startAnimalGame, 2000);
+            }
+
+            startAnimalGame();
+
+        });
+    </script>
 
 </body>
 

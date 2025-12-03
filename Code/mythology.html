@@ -6,29 +6,188 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mythology - Fun Fact Explorer</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .did-you-know {
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            color: #fff;
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: rgba(98, 64, 98, 0.4);
+        }
+    </style>
 </head>
 
-<body>
+<body class="mythology-bg">
 
-   <nav class="topbar">
+    <nav class="topbar">
         <div class="logo">Fun Fact Explorer</div>
         <ul class="menu">
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="ocean.html">Ocean</a></li>
             <li><a href="animals.html">Animals</a></li>
             <li><a href="space.html">Space</a></li>
             <li><a href="languages.html">Languages</a></li>
             <li><a href="history.html">History</a></li>
             <li><a href="geography.html">Geography</a></li>
-            <li><a href="mythology.html">Mythology</a></li>
+            <li><a href="mythology.html" class="active">Mythology</a></li>
             <li><a href="science.html">Science</a></li>
         </ul>
     </nav>
 
+    <!-- video hero -->
+    <div class="video">
+        <video autoplay muted loop playsinline>
+            <source src="videos/mythology.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <header class="hero mythology-hero">
+        <div class="hero-text">
+            <h1>Mythology</h1>
+            <p>Discover fascinating myths and legends from around the world!</p>
+        </div>
+    </header>
+
     <main class="content">
-        <h1>Mythology</h1>
-        <p>Mythology facts maybe?</p>
+
+        <section class="intro">
+            <h2>Explore Mythology Fun Facts</h2>
+            <p>Learn about gods, creatures, and legends from different cultures.</p>
+        </section>
+
+        <!-- fact cards grid -->
+        <section class="fact-card-grid">
+
+            <div class="fact-card">
+                <img src="images/zeus.jpg" alt="Zeus">
+                <h3>Fact 1</h3>
+                <p>Zeus is the king of gods in Greek mythology, ruling from Mount Olympus.</p>
+            </div>
+
+            <div class="fact-card">
+                <img src="images/odin.jpg" alt="Odin">
+                <h3>Fact 2</h3>
+                <p>Odin is the chief god in Norse mythology, associated with wisdom and war.</p>
+            </div>
+
+            <div class="fact-card">
+                <img src="images/ra.jpg" alt="Ra">
+                <h3>Fact 3</h3>
+                <p>Ra is the ancient Egyptian sun god, believed to travel across the sky in his solar barque.</p>
+            </div>
+
+        </section>
+
+        <!-- Did You Know slider -->
+        <section class="did-you-know">
+            <h2>Did You Know?</h2>
+            <p id="fact-slider-text-mythology">Loading fun mythology fact...</p>
+        </section>
+
+        <!-- Real or Fake game -->
+        <section class="fact-game">
+            <h2>Real or Fake?</h2>
+            <p id="game-question-mythology">Which mythology fact is REAL?</p>
+
+            <div class="fact-options">
+                <button id="mythology-optionA" class="fact-btn">Loading...</button>
+                <button id="mythology-optionB" class="fact-btn">Loading...</button>
+            </div>
+
+            <p id="mythology-game-result"></p>
+        </section>
+
     </main>
+
+    <!-- inline JS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const mythologyFacts = [
+                "The Minotaur was a half-man, half-bull creature in Greek mythology.",
+                "In Norse myths, Yggdrasil is the world tree that connects all realms.",
+                "Medusa could turn anyone who looked at her into stone.",
+                "The phoenix is a mythical bird that rises from its ashes.",
+                "Anubis is the ancient Egyptian god of mummification and the afterlife."
+            ];
+
+            const mythologyRealFacts = [
+                "Hercules is famous for completing twelve labors.",
+                "Thor wields a hammer called Mjölnir.",
+                "Athena is the goddess of wisdom in Greek mythology.",
+                "Ra was worshiped as the sun god in ancient Egypt."
+            ];
+
+            const mythologyFakeFacts = [
+                "Zeus lived on the moon.",
+                "Odin could breathe underwater.",
+                "Medusa could fly to the stars.",
+                "The phoenix lays golden eggs."
+            ];
+
+            let mythIndex = 0;
+
+            function updateMythologyFact() {
+                const factBox = document.getElementById("fact-slider-text-mythology");
+                if (factBox) {
+                    factBox.textContent = mythologyFacts[mythIndex];
+                    mythIndex = (mythIndex + 1) % mythologyFacts.length;
+                }
+            }
+
+            setInterval(updateMythologyFact, 3000);
+            updateMythologyFact(); // show first fact immediately
+
+            function startMythologyGame() {
+                const A = document.getElementById("mythology-optionA");
+                const B = document.getElementById("mythology-optionB");
+                const result = document.getElementById("mythology-game-result");
+                if (!A || !B || !result) return;
+
+                A.className = "fact-btn";
+                B.className = "fact-btn";
+                result.textContent = "";
+
+                const real = mythologyRealFacts[Math.floor(Math.random() * mythologyRealFacts.length)];
+                const fake = mythologyFakeFacts[Math.floor(Math.random() * mythologyFakeFacts.length)];
+                const realOnA = Math.random() < 0.5;
+
+                A.textContent = realOnA ? real : fake;
+                B.textContent = realOnA ? fake : real;
+
+                A.disabled = false;
+                B.disabled = false;
+
+                A.onclick = () => checkMythology(realOnA, A, B);
+                B.onclick = () => checkMythology(!realOnA, B, A);
+            }
+
+            function checkMythology(correct, chosen, other) {
+                const result = document.getElementById("mythology-game-result");
+                if (!result) return;
+
+                if (correct) {
+                    chosen.classList.add("correct");
+                    result.textContent = "Correct!";
+                } else {
+                    chosen.classList.add("wrong");
+                    other.classList.add("correct");
+                    result.textContent = "Wrong!";
+                }
+
+                chosen.disabled = true;
+                other.disabled = true;
+
+                setTimeout(startMythologyGame, 2000);
+            }
+
+            startMythologyGame();
+
+        });
+    </script>
 
 </body>
 
