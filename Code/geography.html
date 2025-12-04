@@ -6,17 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geography - Fun Fact Explorer</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .did-you-know {
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            color: #fff;
-            max-width: 800px;
-            margin: 40px auto;
-            background-color: rgba(64, 98, 98, 0.4);
-        }
-    </style>
 </head>
 
 <body class="geography-bg">
@@ -103,91 +92,7 @@
     </main>
 
     <!-- inline JS -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-
-            const geographyFacts = [
-                "Lake Baikal in Russia is the deepest freshwater lake in the world.",
-                "The Dead Sea is the lowest point on Earth’s land surface.",
-                "Greenland is the world's largest island that is not a continent.",
-                "Mount Kilimanjaro is a free-standing mountain in Africa.",
-                "Russia spans 11 time zones across two continents."
-            ];
-
-            const geographyRealFacts = [
-                "The Nile River is the longest river in Africa.",
-                "The Great Barrier Reef is the largest coral reef system on Earth.",
-                "Antarctica is the driest continent, even drier than the Sahara in places.",
-                "The Mariana Trench is the deepest oceanic trench in the world."
-            ];
-
-            const geographyFakeFacts = [
-                "The Amazon River flows through Europe.",
-                "Mount Everest is underwater.",
-                "The Sahara Desert is covered in ice.",
-                "The Pacific Ocean is the smallest ocean."
-            ];
-
-            let geoIndex = 0;
-
-            function updateGeographyFact() {
-                const factBox = document.getElementById("fact-slider-text-geography");
-                if (factBox) {
-                    factBox.textContent = geographyFacts[geoIndex];
-                    geoIndex = (geoIndex + 1) % geographyFacts.length;
-                }
-            }
-
-            setInterval(updateGeographyFact, 3000);
-            updateGeographyFact(); // show first fact immediately
-
-            function startGeographyGame() {
-                const A = document.getElementById("geography-optionA");
-                const B = document.getElementById("geography-optionB");
-                const result = document.getElementById("geography-game-result");
-                if (!A || !B || !result) return;
-
-                A.className = "fact-btn";
-                B.className = "fact-btn";
-                result.textContent = "";
-
-                const real = geographyRealFacts[Math.floor(Math.random() * geographyRealFacts.length)];
-                const fake = geographyFakeFacts[Math.floor(Math.random() * geographyFakeFacts.length)];
-                const realOnA = Math.random() < 0.5;
-
-                A.textContent = realOnA ? real : fake;
-                B.textContent = realOnA ? fake : real;
-
-                A.disabled = false;
-                B.disabled = false;
-
-                A.onclick = () => checkGeography(realOnA, A, B);
-                B.onclick = () => checkGeography(!realOnA, B, A);
-            }
-
-            function checkGeography(correct, chosen, other) {
-                const result = document.getElementById("geography-game-result");
-                if (!result) return;
-
-                if (correct) {
-                    chosen.classList.add("correct");
-                    result.textContent = "Correct!";
-                } else {
-                    chosen.classList.add("wrong");
-                    other.classList.add("correct");
-                    result.textContent = "Wrong!";
-                }
-
-                chosen.disabled = true;
-                other.disabled = true;
-
-                setTimeout(startGeographyGame, 2000);
-            }
-
-            startGeographyGame();
-
-        });
-    </script>
+        <script src="script.js"></script>
 
     <button id="chatbot-toggler" class="chatbot-toggler">
         <span class="icon-chat">💬</span>

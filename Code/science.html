@@ -6,17 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Science - Fun Fact Explorer</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .did-you-know {
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    color: #fff; /* ensure text is visible */
-    max-width: 800px;
-    margin: 40px auto;
-    background-color: rgba(98, 64, 64, 0.4); /* optional semi-transparent bg */
-}
-    </style>
 </head>
 
 <body class="science-bg">
@@ -102,92 +91,7 @@
 
     </main>
 
-    <!-- inline JS -->
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-
-        const scienceFacts = [
-            "Lightning is five times hotter than the surface of the Sun.",
-            "Bananas are naturally radioactive.",
-            "A teaspoon of a neutron star weighs about 4 billion tons.",
-            "There are more stars in the universe than grains of sand on Earth.",
-            "Water can boil and freeze at the same time (triple point)."
-        ];
-
-        const scienceRealFacts = [
-            "Humans share 60% of their DNA with bananas.",
-            "Honey never spoils — archaeologists found 3000-year-old honey still edible.",
-            "You can start a fire with ice if shaped into a lens.",
-            "Some metals explode when they touch water."
-        ];
-
-        const scienceFakeFacts = [
-            "The Sun is actually cold inside.",
-            "Humans only use 2% of their brain.",
-            "Rocks can breathe underwater.",
-            "Gravity turns off for 10 minutes every month."
-        ];
-
-        let sciIndex = 0;
-
-        function updateScienceFact() {
-            const factBox = document.getElementById("fact-slider-text-science");
-            if (factBox) {
-                factBox.textContent = scienceFacts[sciIndex];
-                sciIndex = (sciIndex + 1) % scienceFacts.length;
-            }
-        }
-
-        setInterval(updateScienceFact, 3000);
-        updateScienceFact(); // show first fact immediately
-
-        function startScienceGame() {
-            const A = document.getElementById("science-optionA");
-            const B = document.getElementById("science-optionB");
-            const result = document.getElementById("science-game-result");
-            if (!A || !B || !result) return;
-
-            A.className = "fact-btn";
-            B.className = "fact-btn";
-            result.textContent = "";
-
-            const real = scienceRealFacts[Math.floor(Math.random() * scienceRealFacts.length)];
-            const fake = scienceFakeFacts[Math.floor(Math.random() * scienceFakeFacts.length)];
-            const realOnA = Math.random() < 0.5;
-
-            A.textContent = realOnA ? real : fake;
-            B.textContent = realOnA ? fake : real;
-
-            A.disabled = false;
-            B.disabled = false;
-
-            A.onclick = () => checkScience(realOnA, A, B);
-            B.onclick = () => checkScience(!realOnA, B, A);
-        }
-
-        function checkScience(correct, chosen, other) {
-            const result = document.getElementById("science-game-result");
-            if (!result) return;
-
-            if (correct) {
-                chosen.classList.add("correct");
-                result.textContent = "Correct!";
-            } else {
-                chosen.classList.add("wrong");
-                other.classList.add("correct");
-                result.textContent = "Wrong!";
-            }
-
-            chosen.disabled = true;
-            other.disabled = true;
-
-            setTimeout(startScienceGame, 2000);
-        }
-
-        startScienceGame();
-
-    });
-    </script>
+    <script src="script.js"></script>
 
     <button id="chatbot-toggler" class="chatbot-toggler">
         <span class="icon-chat">💬</span>
