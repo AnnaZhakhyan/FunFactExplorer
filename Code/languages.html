@@ -6,18 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Languages - Fun Fact Explorer</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .did-you-know {
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            color: #fff;
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: rgba(64, 78, 98, 0.4);
+        }
+    </style>
 </head>
 
-<body>
+<body class="languages-bg">
 
-   <nav class="topbar">
+    <!-- Navbar -->
+    <nav class="topbar">
         <div class="logo">Fun Fact Explorer</div>
         <ul class="menu">
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="ocean.html">Ocean</a></li>
             <li><a href="animals.html">Animals</a></li>
             <li><a href="space.html">Space</a></li>
-            <li><a href="languages.html">Languages</a></li>
+            <li><a href="languages.html" class="active">Languages</a></li>
             <li><a href="history.html">History</a></li>
             <li><a href="geography.html">Geography</a></li>
             <li><a href="mythology.html">Mythology</a></li>
@@ -25,10 +38,158 @@
         </ul>
     </nav>
 
+    <!-- Hero Video -->
+    <div class="video">
+        <video autoplay muted loop playsinline>
+            <source src="videos/languages.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <header class="hero languages-hero">
+        <div class="hero-text">
+            <h1>Languages</h1>
+            <p>Discover the world's most amazing and unusual languages!</p>
+        </div>
+    </header>
+
     <main class="content">
-        <h1>Languages</h1>
-        <p>Languages facts maybe?</p>
+
+        <section class="intro">
+            <h2>Explore Language Fun Facts</h2>
+            <p>Learn shocking, funny, and mind-blowing facts about how people communicate worldwide.</p>
+        </section>
+
+        <!-- Fact Cards -->
+        <section class="fact-card-grid">
+
+            <div class="fact-card">
+                <img src="images/languages.jpg" alt="Scripts">
+                <h3>Fact 1</h3>
+                <p>Over 7,000 languages are spoken around the world today.</p>
+            </div>
+
+            <div class="fact-card">
+                <img src="images/alphabets.jpg" alt="Alphabet">
+                <h3>Fact 2</h3>
+                <p>Chinese has over 50,000 characters — but you only need ~3,000 to read a newspaper.</p>
+            </div>
+
+            <div class="fact-card">
+                <img src="images/speech.jpg" alt="Speech">
+                <h3>Fact 3</h3>
+                <p>The Hawaiian alphabet has only 12 letters.</p>
+            </div>
+
+        </section>
+
+        <!-- Did you know slider -->
+        <section class="did-you-know">
+            <h2>Did You Know?</h2>
+            <p id="fact-slider-text-languages">Loading fun language fact...</p>
+        </section>
+
+        <!-- Real or Fake -->
+        <section class="fact-game">
+            <h2>Real or Fake?</h2>
+            <p id="game-question-languages">Which language fact is REAL?</p>
+
+            <div class="fact-options">
+                <button id="languages-optionA" class="fact-btn">Loading...</button>
+                <button id="languages-optionB" class="fact-btn">Loading...</button>
+            </div>
+
+            <p id="languages-game-result"></p>
+        </section>
+
     </main>
+
+    <!-- JS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const languageFacts = [
+                "There are over 7,000 languages spoken worldwide.",
+                "The most translated book is the Bible.",
+                "Some languages whistle instead of speak, like Silbo Gomero.",
+                "Japanese has no plural form for words.",
+                "Arabic is written from right to left."
+            ];
+
+            const languageRealFacts = [
+                "Korean is one of the youngest writing systems, created in the 1400s.",
+                "French was the official language of England for about 300 years.",
+                "Hindi and Urdu are mutually intelligible when spoken.",
+                "Many African languages use clicks, like Xhosa."
+            ];
+
+            const languageFakeFacts = [
+                "Spanish has 200 letters in its alphabet.",
+                "English originally had no vowels.",
+                "Mandarin Chinese can be spoken backward fluently.",
+                "Every language uses the exact same grammar rules."
+            ];
+
+            let langIndex = 0;
+
+            function updateLanguageFact() {
+                const factBox = document.getElementById("fact-slider-text-languages");
+                if (factBox) {
+                    factBox.textContent = languageFacts[langIndex];
+                    langIndex = (langIndex + 1) % languageFacts.length;
+                }
+            }
+
+            setInterval(updateLanguageFact, 3000);
+            updateLanguageFact();
+
+            function startLanguageGame() {
+                const A = document.getElementById("languages-optionA");
+                const B = document.getElementById("languages-optionB");
+                const result = document.getElementById("languages-game-result");
+                if (!A || !B || !result) return;
+
+                A.className = "fact-btn";
+                B.className = "fact-btn";
+                result.textContent = "";
+
+                const real = languageRealFacts[Math.floor(Math.random() * languageRealFacts.length)];
+                const fake = languageFakeFacts[Math.floor(Math.random() * languageFakeFacts.length)];
+                const realOnA = Math.random() < 0.5;
+
+                A.textContent = realOnA ? real : fake;
+                B.textContent = realOnA ? fake : real;
+
+                A.disabled = false;
+                B.disabled = false;
+
+                A.onclick = () => checkLanguage(realOnA, A, B);
+                B.onclick = () => checkLanguage(!realOnA, B, A);
+            }
+
+            function checkLanguage(correct, chosen, other) {
+                const result = document.getElementById("languages-game-result");
+                if (!result) return;
+
+                if (correct) {
+                    chosen.classList.add("correct");
+                    result.textContent = "Correct!";
+                } else {
+                    chosen.classList.add("wrong");
+                    other.classList.add("correct");
+                    result.textContent = "Wrong!";
+                }
+
+                chosen.disabled = true;
+                other.disabled = true;
+
+                setTimeout(startLanguageGame, 2000);
+            }
+
+            startLanguageGame();
+
+        });
+    </script>
 
 </body>
 

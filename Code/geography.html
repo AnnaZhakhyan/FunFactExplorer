@@ -6,29 +6,188 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geography - Fun Fact Explorer</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .did-you-know {
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            color: #fff;
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: rgba(64, 98, 98, 0.4);
+        }
+    </style>
 </head>
 
-<body>
+<body class="geography-bg">
 
-   <nav class="topbar">
+    <nav class="topbar">
         <div class="logo">Fun Fact Explorer</div>
         <ul class="menu">
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="ocean.html">Ocean</a></li>
             <li><a href="animals.html">Animals</a></li>
             <li><a href="space.html">Space</a></li>
             <li><a href="languages.html">Languages</a></li>
             <li><a href="history.html">History</a></li>
-            <li><a href="geography.html">Geography</a></li>
+            <li><a href="geography.html" class="active">Geography</a></li>
             <li><a href="mythology.html">Mythology</a></li>
             <li><a href="science.html">Science</a></li>
         </ul>
     </nav>
 
+    <!-- video hero -->
+    <div class="video">
+        <video autoplay muted loop playsinline>
+            <source src="videos/geography.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <header class="hero geography-hero">
+        <div class="hero-text">
+            <h1>Geography</h1>
+            <p>Discover fascinating geographical facts!</p>
+        </div>
+    </header>
+
     <main class="content">
-        <h1>Geography</h1>
-        <p>Geography facts maybe?</p>
+
+        <section class="intro">
+            <h2>Explore Geography Fun Facts</h2>
+            <p>Learn about continents, rivers, mountains, and amazing natural wonders across the world.</p>
+        </section>
+
+        <!-- fact cards grid -->
+        <section class="fact-card-grid">
+
+            <div class="fact-card">
+                <img src="images/mount_everest.jpg" alt="Mount Everest">
+                <h3>Fact 1</h3>
+                <p>Mount Everest is the tallest mountain above sea level at 8,848 meters.</p>
+            </div>
+
+            <div class="fact-card">
+                <img src="images/amazonriver.jpg" alt="Amazon River">
+                <h3>Fact 2</h3>
+                <p>The Amazon River is the largest river by discharge volume of water in the world.</p>
+            </div>
+
+            <div class="fact-card">
+                <img src="images/sahara.jpg" alt="Sahara Desert">
+                <h3>Fact 3</h3>
+                <p>The Sahara Desert is roughly the size of the United States.</p>
+            </div>
+
+        </section>
+
+        <!-- Did You Know slider -->
+        <section class="did-you-know">
+            <h2>Did You Know?</h2>
+            <p id="fact-slider-text-geography">Loading fun geography fact...</p>
+        </section>
+
+        <!-- Real or Fake game -->
+        <section class="fact-game">
+            <h2>Real or Fake?</h2>
+            <p id="game-question-geography">Which geography fact is REAL?</p>
+
+            <div class="fact-options">
+                <button id="geography-optionA" class="fact-btn">Loading...</button>
+                <button id="geography-optionB" class="fact-btn">Loading...</button>
+            </div>
+
+            <p id="geography-game-result"></p>
+        </section>
+
     </main>
+
+    <!-- inline JS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const geographyFacts = [
+                "Lake Baikal in Russia is the deepest freshwater lake in the world.",
+                "The Dead Sea is the lowest point on Earth’s land surface.",
+                "Greenland is the world's largest island that is not a continent.",
+                "Mount Kilimanjaro is a free-standing mountain in Africa.",
+                "Russia spans 11 time zones across two continents."
+            ];
+
+            const geographyRealFacts = [
+                "The Nile River is the longest river in Africa.",
+                "The Great Barrier Reef is the largest coral reef system on Earth.",
+                "Antarctica is the driest continent, even drier than the Sahara in places.",
+                "The Mariana Trench is the deepest oceanic trench in the world."
+            ];
+
+            const geographyFakeFacts = [
+                "The Amazon River flows through Europe.",
+                "Mount Everest is underwater.",
+                "The Sahara Desert is covered in ice.",
+                "The Pacific Ocean is the smallest ocean."
+            ];
+
+            let geoIndex = 0;
+
+            function updateGeographyFact() {
+                const factBox = document.getElementById("fact-slider-text-geography");
+                if (factBox) {
+                    factBox.textContent = geographyFacts[geoIndex];
+                    geoIndex = (geoIndex + 1) % geographyFacts.length;
+                }
+            }
+
+            setInterval(updateGeographyFact, 3000);
+            updateGeographyFact(); // show first fact immediately
+
+            function startGeographyGame() {
+                const A = document.getElementById("geography-optionA");
+                const B = document.getElementById("geography-optionB");
+                const result = document.getElementById("geography-game-result");
+                if (!A || !B || !result) return;
+
+                A.className = "fact-btn";
+                B.className = "fact-btn";
+                result.textContent = "";
+
+                const real = geographyRealFacts[Math.floor(Math.random() * geographyRealFacts.length)];
+                const fake = geographyFakeFacts[Math.floor(Math.random() * geographyFakeFacts.length)];
+                const realOnA = Math.random() < 0.5;
+
+                A.textContent = realOnA ? real : fake;
+                B.textContent = realOnA ? fake : real;
+
+                A.disabled = false;
+                B.disabled = false;
+
+                A.onclick = () => checkGeography(realOnA, A, B);
+                B.onclick = () => checkGeography(!realOnA, B, A);
+            }
+
+            function checkGeography(correct, chosen, other) {
+                const result = document.getElementById("geography-game-result");
+                if (!result) return;
+
+                if (correct) {
+                    chosen.classList.add("correct");
+                    result.textContent = "Correct!";
+                } else {
+                    chosen.classList.add("wrong");
+                    other.classList.add("correct");
+                    result.textContent = "Wrong!";
+                }
+
+                chosen.disabled = true;
+                other.disabled = true;
+
+                setTimeout(startGeographyGame, 2000);
+            }
+
+            startGeographyGame();
+
+        });
+    </script>
 
 </body>
 
