@@ -1,3 +1,8 @@
+
+/* -----------------------------
+   INDEX PAGE GAME
+------------------------------ */
+
 let questions = [
     "How much of the earth is covered by oceans?",
     "How deep is the deepest part of the ocean?",
@@ -18,41 +23,58 @@ let score = 0;
 
 function showQuestion() {
     let quizDiv = document.getElementById("quiz");
+    let resultBox = document.getElementById("quiz-result");
+
+    resultBox.textContent = "";
     quizDiv.innerHTML = `<h2>${questions[index]}</h2>`;
-    
+
     options[index].forEach((opt, i) => {
-        quizDiv.innerHTML += `<button class="quiz-button" onclick="checkAnswer(${i})">${opt}</button>`;
+        quizDiv.innerHTML += `<button class="quiz-button" data-choice="${i}">${opt}</button>`;
+    });
+
+    document.querySelectorAll(".quiz-button").forEach(btn => {
+        btn.addEventListener("click", () => checkAnswer(btn));
     });
 }
 
-function checkAnswer(choice) {
-    let buttons = document.querySelectorAll(".quiz.button");
+function checkAnswer(button) {
+    const choice = Number(button.dataset.choice);
+    const isCorrect = choice === answers[index];
+    const resultBox = document.getElementById("quiz-result");
+
+    let buttons = document.querySelectorAll(".quiz-button");
 
     buttons.forEach(btn => btn.disabled = true);
 
-    if (choice === answers[index]) {
-        alert("Correct!");
+    if (isCorrect) {
+        button.classList.add("correct");
+        resultBox.textContent = "Correct!";
         score++;
-    } 
-    
+    }
+
     else {
-        alert("Wrong!");
-    } 
+        button.classList.add("wrong");
+        buttons[answers[index]].classList.add("correct");
+        resultBox.textContent = "Nope!";
+    }
+
+    setTimeout(() => {
+        index++;
+        if (index < questions.length) {
+            showQuestion();
+        } else {
+            showFinalScore();
+        }
+    }, 1500);
 }
 
-setTimeout (() => {
-    index++;
-    if (index < questions.length) {
-        showQuestion();
-    } else {
-        alert("Quiz finished!");
-        showFinalScore();
-    }
-}, 1000);
+
 
 function showFinalScore() {
     let quizDiv = document.getElementById("quiz");
+    let resultBox = document.getElementById("quiz-result");
 
+    resultBox.textContent = "";
     quizDiv.innerHTML = `
         <h2>Quiz finished!</h2>
         <p>Your final score is <strong>${score}</strong> out of <strong>${questions.length}</strong>.</p>
