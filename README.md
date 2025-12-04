@@ -6,6 +6,6 @@ Need too add test cases
 ## Team 
 
 Anna:       main pages design + development, testing    
-Thomas:     AI Chatbot (integrated API from Gemini)
+Thomas:     AI Chatbot (integrated API from Gemini), documentation
 Nathan:     pages design + development, testing 
-Cathrin:    special game impl, documentation
+Cathrin:    special game impl, documentation, making it responsive
