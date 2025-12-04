@@ -52,4 +52,14 @@
 | Extensions    | -                                                                                                   |
 
 <br>
-                                                                                                                                                
+| Name          | Interact with AI Chatbot for In-depth Learning                                                                                                                                                                                               | 
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Actor         | User                                                                                                                                                                                                                                         |
+| Description   | The user utilizes the floating chatbot widget to ask follow-up questions about a fun fact they just read or to seek clarification on a topic after completing a quiz.                                                                        |
+| Pre-condition | -                                                                                                                                                                                                                                            |
+| Scenario      | 1. User clicks the chatbot icon to open the chat interface. <br> 2. User types a specific question regarding a recent fact or quiz result. <br> 3. System processes the request via the Gemini API. <br> 4. System displays a conversational explanation. <br> |
+| Result        | User gains deeper context and understanding of the topic beyond the initial fact.                                                                                                                                                            |
+| Exception     | 1. Network/API Error: System displays "I couldn't find a fact for that". <br> 2. Empty Input: System prevents sending empty messages.                                                                                                        | 
+| Extensions    | 1. Quiz Review: User asks for the reasoning behind a correct/incorrect quiz answer. <br> 2. Off-topic Pivot: User asks unrelated question, and AI steers conversation back to fun facts.                                                     |
+
+                                                                                                                                   
