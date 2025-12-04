@@ -6,29 +6,188 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History - Fun Fact Explorer</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .did-you-know {
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            color: #fff;
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: rgba(98, 64, 64, 0.4);
+        }
+    </style>
 </head>
 
-<body>
+<body class="history-bg">
 
-   <nav class="topbar">
+    <nav class="topbar">
         <div class="logo">Fun Fact Explorer</div>
         <ul class="menu">
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="ocean.html">Ocean</a></li>
             <li><a href="animals.html">Animals</a></li>
             <li><a href="space.html">Space</a></li>
             <li><a href="languages.html">Languages</a></li>
-            <li><a href="history.html">History</a></li>
+            <li><a href="history.html" class="active">History</a></li>
             <li><a href="geography.html">Geography</a></li>
             <li><a href="mythology.html">Mythology</a></li>
             <li><a href="science.html">Science</a></li>
         </ul>
     </nav>
 
+    <!-- video hero -->
+    <div class="video">
+        <video autoplay muted loop playsinline>
+            <source src="videos/historys.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <header class="hero history-hero">
+        <div class="hero-text">
+            <h1>History</h1>
+            <p>Explore amazing historical facts!</p>
+        </div>
+    </header>
+
     <main class="content">
-        <h1>History</h1>
-        <p>History facts maybe?</p>
+
+        <section class="intro">
+            <h2>Explore History Fun Facts</h2>
+            <p>Discover events, inventions, and stories from the past that shaped our world.</p>
+        </section>
+
+        <!-- fact cards grid -->
+        <section class="fact-card-grid">
+
+            <div class="fact-card">
+                <img src="images/ancient.jpg"" alt="Ancient Civilization">
+                <h3>Fact 1</h3>
+                <p>The Great Pyramid of Giza was the tallest man-made structure for over 3,800 years.</p>
+            </div>
+
+            <div class="fact-card">
+                <img src="images/industrail.jpg" alt="Industrial Revolution">
+                <h3>Fact 2</h3>
+                <p>The Industrial Revolution began in Britain in the late 18th century.</p>
+            </div>
+
+            <div class="fact-card">
+                <img src="images/moon_landing.jpg" alt="Moon Landing">
+                <h3>Fact 3</h3>
+                <p>The first humans landed on the Moon in 1969 during the Apollo 11 mission.</p>
+            </div>
+
+        </section>
+
+        <!-- Did You Know slider -->
+        <section class="did-you-know">
+            <h2>Did You Know?</h2>
+            <p id="fact-slider-text-history">Loading fun history fact...</p>
+        </section>
+
+        <!-- Real or Fake game -->
+        <section class="fact-game">
+            <h2>Real or Fake?</h2>
+            <p id="game-question-history">Which history fact is REAL?</p>
+
+            <div class="fact-options">
+                <button id="history-optionA" class="fact-btn">Loading...</button>
+                <button id="history-optionB" class="fact-btn">Loading...</button>
+            </div>
+
+            <p id="history-game-result"></p>
+        </section>
+
     </main>
+
+    <!-- inline JS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const historyFacts = [
+                "The Great Fire of London happened in 1666.",
+                "The shortest war in history was between Britain and Zanzibar, lasting 38 minutes.",
+                "Julius Caesar was assassinated in 44 BC.",
+                "The Berlin Wall fell in 1989.",
+                "Napoleon was once attacked by a horde of bunnies."
+            ];
+
+            const historyRealFacts = [
+                "The Library of Alexandria was one of the largest libraries of the ancient world.",
+                "The first Olympic Games were held in 776 BC in Greece.",
+                "The printing press was invented by Johannes Gutenberg in the 15th century.",
+                "The Magna Carta was signed in 1215, limiting the power of the king."
+            ];
+
+            const historyFakeFacts = [
+                "The Roman Empire had cars powered by steam.",
+                "King Tut was the first pharaoh to ride a bicycle.",
+                "The Titanic sank in 1901 due to ice cream melting.",
+                "The Colosseum could host space shuttle launches."
+            ];
+
+            let histIndex = 0;
+
+            function updateHistoryFact() {
+                const factBox = document.getElementById("fact-slider-text-history");
+                if (factBox) {
+                    factBox.textContent = historyFacts[histIndex];
+                    histIndex = (histIndex + 1) % historyFacts.length;
+                }
+            }
+
+            setInterval(updateHistoryFact, 3000);
+            updateHistoryFact(); // show first fact immediately
+
+            function startHistoryGame() {
+                const A = document.getElementById("history-optionA");
+                const B = document.getElementById("history-optionB");
+                const result = document.getElementById("history-game-result");
+                if (!A || !B || !result) return;
+
+                A.className = "fact-btn";
+                B.className = "fact-btn";
+                result.textContent = "";
+
+                const real = historyRealFacts[Math.floor(Math.random() * historyRealFacts.length)];
+                const fake = historyFakeFacts[Math.floor(Math.random() * historyFakeFacts.length)];
+                const realOnA = Math.random() < 0.5;
+
+                A.textContent = realOnA ? real : fake;
+                B.textContent = realOnA ? fake : real;
+
+                A.disabled = false;
+                B.disabled = false;
+
+                A.onclick = () => checkHistory(realOnA, A, B);
+                B.onclick = () => checkHistory(!realOnA, B, A);
+            }
+
+            function checkHistory(correct, chosen, other) {
+                const result = document.getElementById("history-game-result");
+                if (!result) return;
+
+                if (correct) {
+                    chosen.classList.add("correct");
+                    result.textContent = "Correct!";
+                } else {
+                    chosen.classList.add("wrong");
+                    other.classList.add("correct");
+                    result.textContent = "Wrong!";
+                }
+
+                chosen.disabled = true;
+                other.disabled = true;
+
+                setTimeout(startHistoryGame, 2000);
+            }
+
+            startHistoryGame();
+
+        });
+    </script>
 
 </body>
 
