@@ -76,7 +76,7 @@ function check(isCorrect, chosenBtn, otherBtn) {
     chosenBtn.disabled = true;
     otherBtn.disabled = true;
 
-    // next round starts in aroudn 2 seconds
+    // next round starts in around 2 seconds
     setTimeout(startGameRound, 2000);
 }
 
