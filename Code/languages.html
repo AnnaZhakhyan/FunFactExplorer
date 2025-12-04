@@ -191,6 +191,31 @@
         });
     </script>
 
+    <button id="chatbot-toggler" class="chatbot-toggler">
+        <span class="icon-chat">💬</span>
+        <span class="icon-close">✖️</span>
+    </button>
+
+    <div class="chatbot-popup">
+        <header>
+            <h2>Fun Fact Genie 💡</h2>
+            <span class="close-btn">✖️</span>
+        </header>
+        
+        <ul class="chat-box" id="chatBox">
+            <li class="message bot-message">
+                <p>Hello! I'm the Fun Fact Genie. Ask me for a fact about anything!</p>
+            </li>
+        </ul>
+        
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Ask a fact..." required>
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+    
+    <script src="AI_script.js"></script>
+
 </body>
 
 </html>
