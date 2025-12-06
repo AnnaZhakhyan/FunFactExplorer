@@ -430,6 +430,24 @@ button#next:hover {
     background-color: black;
 }
 
+/* Team Section */
+.about-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    text-align: center;
+}
+
+.team-photo {
+    max-width: 60%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    margin-bottom: 1.5rem;
+}
+
 
 
 
