@@ -672,3 +672,8 @@ body.show-chatbot .chatbot-popup {
         padding: 20px;
     }
 }
+footer{
+    color: white;
+    background-color: #003f6b;
+    padding: 2%;
+}
