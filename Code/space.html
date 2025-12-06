@@ -27,7 +27,7 @@
         </ul>
     </nav>
 
-    <!-- video banner -->
+    <!-- video hero -->
     <div class="video">
         <video autoplay muted loop playsinline>
             <source src="videos/space.mp4" type="video/mp4">
@@ -35,10 +35,10 @@
         </video>
     </div>
 
-    <header class="hero space-hero">
+    <header class=" space">
         <div class="hero-text">
             <h1>Outer Space</h1>
-            <p>Explore the mysteries of the universe!</p>
+            <p>Discover the wonders of the universe!</p>
         </div>
     </header>
 
@@ -46,36 +46,54 @@
 
         <section class="intro">
             <h2>Explore Space Fun Facts</h2>
-            <p>Blast off into mind-bending facts about planets, stars, galaxies, and beyond.</p>
+            <p>Planets, stars, galaxies — and mysteries we haven’t even discovered yet.</p>
         </section>
 
-        <!-- fact cards -->
+        <!-- fact cards grid -->
         <section class="fact-card-grid">
+
             <div class="fact-card">
+                <img src="images/space-1.jpg" alt="Planet">
                 <h3>Fact 1</h3>
-                <p>Placeholder space fact text goes here.</p>
+                <p>There are more stars in the universe than grains of sand on all Earth’s beaches.</p>
             </div>
 
             <div class="fact-card">
+                <img src="images/space-2.jpg" alt="Black Hole">
                 <h3>Fact 2</h3>
-                <p>Placeholder space fact text goes here.</p>
+                <p>Falling into a black hole would stretch you like spaghetti — “spaghettification.”</p>
             </div>
 
             <div class="fact-card">
+                <img src="images/space-3.jpeg" alt="Nebula">
                 <h3>Fact 3</h3>
-                <p>Placeholder space fact text goes here.</p>
+                <p>Some nebulae are so large they could fit millions of Earths inside them.</p>
             </div>
+
         </section>
 
+        <!-- Did You Know slider -->
         <section class="did-you-know">
             <h2>Did You Know?</h2>
-            <p id="fact-slider-text">Loading fun space fact...</p>
+            <p id="fact-slider-text-science">Loading fun space fact...</p>
         </section>
-        <!-- need to connect this to an API and change it to space facts, but i put default ocean facts there for now -->
+
+        <!-- Real or Fake game -->
+        <section class="fact-game">
+            <h2>Real or Fake?</h2>
+            <p id="science-question">Which space fact is REAL?</p>
+
+            <div class="fact-options">
+                <button id="science-optionA" class="fact-btn">Loading...</button>
+                <button id="science-optionB" class="fact-btn">Loading...</button>
+            </div>
+
+            <p id="science-game-result"></p>
+        </section>
 
     </main>
-    <script src="script.js"></script>
 
+    <!-- CHATBOT -->
     <button id="chatbot-toggler" class="chatbot-toggler">
         <span class="icon-chat">💬</span>
         <span class="icon-close">✖️</span>
@@ -83,7 +101,7 @@
 
     <div class="chatbot-popup">
         <header>
-            <h2>Fun Fact Genie 💡</h2>
+            <h2>Fun Fact Genie </h2>
             <span class="close-btn">✖️</span>
         </header>
         
@@ -100,10 +118,11 @@
     </div>
     
     <script src="AI_script.js"></script>
+    <script src="script.js"></script>
 
     <footer class="footer">
-    <p>&copy; 2025 Fun Fact Explorer. All rights reserved.</p>
-  </footer>
+        <p>&copy; 2025 Fun Fact Explorer. All rights reserved.</p>
+    </footer>
 
 </body>
 

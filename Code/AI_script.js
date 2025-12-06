@@ -93,7 +93,6 @@ async function sendMessage() {
         }
 
     } catch (error) {
-        // Remove "Thinking..." message if it exists
         if(thinkingLi.parentNode === chatBox) chatBox.removeChild(thinkingLi);
         
         console.error('Gemini API Error:', error);
@@ -109,3 +108,12 @@ sendButton.addEventListener('click', sendMessage);
 userInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') sendMessage();
 });
+// Export functions for testing
+if (typeof module !== "undefined") {
+    module.exports = {
+        createMessageElement,
+        displayMessage,
+        sendMessage,
+        conversationHistory
+    };
+}

@@ -1,7 +1,4 @@
 
-/* -----------------------------
-   INDEX PAGE GAME
------------------------------- */
 
 let questions = [
     "How much of the earth is covered by oceans?",

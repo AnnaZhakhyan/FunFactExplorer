@@ -195,6 +195,10 @@ body {
     gap: 25px;
     margin-top: 40px;
 }
+.fact-card p {
+    color: #222;
+}
+
 
 .fact-card {
     background: #ffffff;
