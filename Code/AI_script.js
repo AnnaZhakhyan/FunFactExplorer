@@ -1,4 +1,4 @@
-const GEMINI_API_KEY = "AIzaSyA53abSt29ceMsBny4jJRxAsztOU8xJyJo"; 
+const GEMINI_API_KEY = "AIzaSyBmakIqnzZd_qRIqfVLLanCofssBfiuZo4"; 
 const CHAT_MODEL = 'gemini-2.5-flash'; 
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${CHAT_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
 
