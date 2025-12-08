@@ -63,4 +63,14 @@
 | Exception     | 1. Network/API Error: System displays "I couldn't find a fact for that". <br> 2. Empty Input: System prevents sending empty messages.                                                                                                        | 
 | Extensions    | 1. Quiz Review: User asks for the reasoning behind a correct/incorrect quiz answer. <br> 2. Off-topic Pivot: User asks unrelated question, and AI steers conversation back to fun facts.                                                     |
 
-                                                                                                                                   
+<br>
+
+| Name          | Research using the built-in search engine                                                                                                                                                                                                                                      | 
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Actor         | User                                                                                                                                                                                                                                         |
+| Description   | User learns more about fun facts from different categories                                                                                                                                                                                                                      |
+| Pre-condition | -                                                                                                    |
+| Scenario      | 1. Actor navigates to the Home page. <br> 2. System open the Home page. <br> 3.Actor scrolls down and types in search query into the search bar provided. <br> 4. System loads up the search result. |
+| Result        | Actor gets to read up on fun facts from a desired field/category.                                                                                |
+| Exception     | 3.1.User puts in invalid input into the search bar. 3.2.System displays error message "Topic not found. Try another one!". | 
+| Extensions    | -                                                                                                                                      
