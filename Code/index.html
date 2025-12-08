@@ -23,10 +23,8 @@
             <li><a href="mythology.html">Mythology</a></li>
             <li><a href="science.html">Science</a></li>
             <li><a href="about.html">About</a></li>
-            
         </ul>
     </nav>
-
 
     <div class="video">
         <video autoplay muted loop playsinline>
@@ -39,78 +37,86 @@
         </div>
     </div>
 
-    <main class="content center-cards">
-        <!-- making cards -->
-        <h1>Choose a Topic</h1>
+    <!-- Section 1: Topic Cards -->
+    <div class="section-block">
+        <main class="content center-cards">
+            <h1>Choose a Topic</h1>
 
-        <div class="card-grid">
-            <a href="ocean.html" class="topic-card">
-                <img src="images/ocean.jpg" alt="Ocean">
-                <h2>Ocean</h2>
-            </a>
+            <div class="card-grid">
+                <a href="ocean.html" class="topic-card">
+                    <img src="images/ocean.jpg" alt="Ocean">
+                    <h2>Ocean</h2>
+                </a>
 
-            <a href="animals.html" class="topic-card">
-                <img src="images/animals.jpg" alt="Animals">
-                <h2>Animals</h2>
-            </a>
+                <a href="animals.html" class="topic-card">
+                    <img src="images/animals.jpg" alt="Animals">
+                    <h2>Animals</h2>
+                </a>
 
-            <a href="space.html" class="topic-card">
-                <img src="images/space.jpg" alt="Space">
-                <h2>Space</h2>
-            </a>
+                <a href="space.html" class="topic-card">
+                    <img src="images/space.jpg" alt="Space">
+                    <h2>Space</h2>
+                </a>
 
-            <a href="languages.html" class="topic-card">
-                <img src="images/languages.jpg" alt="Languages">
-                <h2>Languages</h2>
-            </a>
+                <a href="languages.html" class="topic-card">
+                    <img src="images/languages.jpg" alt="Languages">
+                    <h2>Languages</h2>
+                </a>
 
-            <a href="history.html" class="topic-card">
-                <img src="images/history.jpg" alt="History">
-                <h2>History</h2>
-            </a>
+                <a href="history.html" class="topic-card">
+                    <img src="images/history.jpg" alt="History">
+                    <h2>History</h2>
+                </a>
 
-            <a href="geography.html" class="topic-card">
-                <img src="images/geography.jpg" alt="Geography">
-                <h2>Geography</h2>
-            </a>
+                <a href="geography.html" class="topic-card">
+                    <img src="images/geography.jpg" alt="Geography">
+                    <h2>Geography</h2>
+                </a>
 
-            <a href="mythology.html" class="topic-card">
-                <img src="images/mythology.jpg" alt="Mythology">
-                <h2>Mythology</h2>
-            </a>
+                <a href="mythology.html" class="topic-card">
+                    <img src="images/mythology.jpg" alt="Mythology">
+                    <h2>Mythology</h2>
+                </a>
 
-            <a href="science.html" class="topic-card">
-                <img src="images/science.jpeg" alt="Science">
-                <h2>Science</h2>
-            </a>
-        </div>
-        <hr style="margin: 50px 0; border: none; height: 2px; background-color: #218380;">
-
-    <div class="container">
-        <h1>Research Anything 🔍</h1>
-
-    <input type="text" id="searchInput" placeholder="Search for anything...">
-    <button onclick="searchTopic()">Search</button>
-
-    <div id="result" class="result-box"></div>
+                <a href="science.html" class="topic-card">
+                    <img src="images/science.jpeg" alt="Science">
+                    <h2>Science</h2>
+                </a>
+            </div>
+        </main>
     </div>
-    <script src="search.js"></script>
 
+    <div class="section-divider"></div>
+
+    <!-- Section 2: Search Engine -->
+    <div class="section-block">
+        <div class="container">
+            <h1>Research Anything 🔍</h1>
+
+            <input type="text" id="searchInput" placeholder="Search for anything...">
+            <button onclick="searchTopic()">Search</button>
+
+            <div id="result" class="result-box"></div>
+        </div>
+        <script src="search.js"></script>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Section 3: Quiz Section -->
+    <div class="section-block">
         <section class="quiz-section">
             <h2>Quiz Time!</h2>
             <div class="quiz-placeholder">
-                <!-- quiz should go here later, cat -->
-        
                 <div id="quiz"></div>
                 <p id="quiz-result"></p>
-        
+
                 <script src="../game1.js"></script>
             </div>
         </section>
-        
-    </main>
+    </div>
 
-
+    <!-- Chatbot -->
     <button id="chatbot-toggler" class="chatbot-toggler">
         <span class="icon-chat">💬</span>
         <span class="icon-close">✖️</span>
@@ -133,13 +139,12 @@
             <button id="sendButton">Send</button>
         </div>
     </div>
-    
+
     <script src="AI_script.js"></script>
 
     <footer class="footer">
-    <p>&copy; 2025 Fun Fact Explorer. All rights reserved.</p>
-  </footer>
+        <p>&copy; 2025 Fun Fact Explorer. All rights reserved.</p>
+    </footer>
 
 </body>
-
 </html>
