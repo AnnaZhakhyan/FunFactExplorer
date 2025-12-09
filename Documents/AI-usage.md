@@ -1,5 +1,6 @@
 ## AI Usage prompts and what we have learned
 (write down and log all your promts to the AI tool and how it evolves over time, and how AI actually helped you)
+workflow with the web development with AI tools with some example prompts and how they are used in different steps in web development 
 
 ### Prompts
 
@@ -9,8 +10,10 @@
    This prompt asks ChatGPT about a more convenient structure for the website without directly asking it for specific code. This is convenient for the programmers because it provides standard based code and allows them to work on more specicifc features.
 #### 3. Make this page better looking and feel more user-friendly please.
    We think one of the best things you can use AI for is web design, and this prompt is a great example of how it can help improve the process of web development by making working pages more adapted to users.
-### 4. Solving problems in the output.
+### 4. Solving problems in the output. This output (..) has caused me problems, explain the error.
    After coding, there were problems occurring in the output of the program. We took a screenshot of the list of problems with the code on top of it and asked ChatGPT to tell us the exact problem. Because the problems are listed as codes, ChatGPT knows what the problem is and helps us to solve them. Through the help, we can focus on the specific features with an automatic error trail. 
    For example, the game on the Index-page had problems because I coded in Java first and then transferred it to Javascript. There were problems of some functions. ChatGPT explained the problem, so I was able to change the code accordingly without changing my features. 
 #### 5. Help me integrate this AI chatbot into the index file as a pop-up widget.
    This prompt was essential for merging our standalone chatbot prototype into the main website. We had a functioning script to talk to the Gemini API, but we were unsure how to make it appear as a non-intrusive pop-up on the homepage. The AI acted as a front-end specialist, generating the specific CSS for the floating button and the JavaScript logic to toggle the window open and closed. This allowed us to successfully integrate a complex feature like an AI API without having to rewrite our entire website structure or struggle with CSS positioning.
+#### 6. Adapt this page more to the others design-wise. 
+This prompt focuses on design and scalability, we think that this kind of work is easier done through AI to ensure consistency.
