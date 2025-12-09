@@ -339,6 +339,30 @@ html {
     background: radial-gradient(circle at center, #0b0b19, #000000);
     color: #eee;
 }
+.history-bg{
+    background: radial-gradient(circle at center, #172652, #09110b);
+    color: #eee;
+}
+.mythology-bg{
+    background: radial-gradient(circle at center, #1e667c, #172d1b);
+    color: #eee;
+}
+.science-bg{
+    background: radial-gradient(circle at center, #17062c, #61526b);
+    color: #eee;
+}
+.animals-bg{
+    background: radial-gradient(circle at center, #4d7957, #1a2d16);
+    color: #eee; 
+}
+.geography-bg{
+    background: radial-gradient(circle at center, #0f4454, #131428);
+    color: #eee;
+}
+.languages-bg{
+    background: radial-gradient(circle at center, #d4c699, #6a674a);
+    color: #eee;
+}
 
 #fact-slider-text {
     font-size: 1.6rem;
@@ -551,6 +575,7 @@ button#next:hover {
     margin-bottom: 1.5rem;
 }
 
+
 /* mobile responsiveness */
 @media (max-width: 600px) {
     .team-photo {
@@ -599,8 +624,8 @@ body.show-chatbot .chatbot-toggler span.icon-close {
     position: fixed;
     right: 35px;
     bottom: 90px;
-    width: 350px; /* Adjust width as needed */
-    height: 450px; /* Adjust height as needed */
+    width: 350px; 
+    height: 450px; 
     background: #fff;
     border-radius: 15px;
     overflow: hidden;
@@ -648,9 +673,9 @@ body.show-chatbot .chatbot-popup {
 /* Chat Box Area */
 .chat-box {
     overflow-y: auto;
-    height: 100%; /* Takes remaining space */
+    height: 100%; 
     padding: 15px 20px;
-    list-style: none; /* Removes bullet points */
+    list-style: none; 
     margin: 0;
 }
 
