@@ -258,11 +258,11 @@ if (document.getElementById("science-optionA") && document.getElementById("scien
 
         if (correct) {
             chosen.classList.add("correct");
-            result.textContent = "Correct! 🚀";
+            result.textContent = "Correct! ";
         } else {
             chosen.classList.add("wrong");
             other.classList.add("correct");
-            result.textContent = "Wrong! 👀";
+            result.textContent = "Wrong! ";
         }
 
         chosen.disabled = true;
