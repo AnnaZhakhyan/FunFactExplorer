@@ -183,96 +183,97 @@ document.addEventListener("DOMContentLoaded", () => {
 
         startScienceGame();
     }
+
     /* -----------------------------
-    space page
-   ------------------------------ */
+            space page
+    ------------------------------ */
 
-if (document.getElementById("fact-slider-text-science")) {
+    if (document.getElementById("fact-slider-text-science")) {
 
-    const spaceFacts = [
-        "Jupiter’s Great Red Spot is a storm that’s been raging for at least 350 years.",
-        "A day on Venus is longer than a full Venus year.",
-        "There's a massive cloud in space that smells like rum and contains sugar molecules.",
-        "Neutron stars can spin up to 700 times per second.",
-        "Falling into a black hole would stretch you like spaghetti — it's called spaghettification."
-    ];
+        const spaceFacts = [
+            "Jupiter’s Great Red Spot is a storm that’s been raging for at least 350 years.",
+            "A day on Venus is longer than a full Venus year.",
+            "There's a massive cloud in space that smells like rum and contains sugar molecules.",
+            "Neutron stars can spin up to 700 times per second.",
+            "Falling into a black hole would stretch you like spaghetti — it's called spaghettification."
+        ];
 
-    let spIndex = 0;
+        let spIndex = 0;
 
-    function updateScienceFact() {
-        const factBox = document.getElementById("fact-slider-text-science");
-        if (!factBox) return;
+        function updateScienceFact() {
+            const factBox = document.getElementById("fact-slider-text-science");
+            if (!factBox) return;
 
-        factBox.textContent = spaceFacts[spIndex];
-        spIndex = (spIndex + 1) % spaceFacts.length;  
-    }
-
-    setInterval(updateScienceFact, 3000);
-    updateScienceFact();
-}
-
-
-if (document.getElementById("science-optionA") && document.getElementById("science-optionB")) {
-
-    const spaceRealFacts = [
-        "Space is completely silent — sound cannot travel in a vacuum.",
-        "Mars has the largest volcano in the solar system, Olympus Mons.",
-        "The Sun makes up 99.8% of all mass in our solar system.",
-        "There are more trees on Earth than stars in the Milky Way."
-    ];
-
-    const spaceFakeFacts = [
-        "Astronauts grow a new tooth for every year spent in space.",
-        "The Moon glows because it has a giant lightbulb inside.",
-        "Saturn's rings are made of frozen pancakes.",
-        "Black holes sneeze every 12 minutes."
-    ];
-
-    function startScienceGame() {
-        const A = document.getElementById("science-optionA");
-        const B = document.getElementById("science-optionB");
-        const result = document.getElementById("science-game-result");
-
-        if (!A || !B) return;
-
-        A.className = "fact-btn";
-        B.className = "fact-btn";
-        result.textContent = "";
-
-        const real = spaceRealFacts[Math.floor(Math.random() * spaceRealFacts.length)];
-        const fake = spaceFakeFacts[Math.floor(Math.random() * spaceFakeFacts.length)];
-        const realOnA = Math.random() < 0.5;
-
-        A.textContent = realOnA ? real : fake;
-        B.textContent = realOnA ? fake : real;
-
-        A.disabled = false;
-        B.disabled = false;
-
-        A.onclick = () => checkScience(realOnA, A, B);
-        B.onclick = () => checkScience(!realOnA, B, A);
-    }
-
-    function checkScience(correct, chosen, other) {
-        const result = document.getElementById("science-game-result");
-
-        if (correct) {
-            chosen.classList.add("correct");
-            result.textContent = "Correct! ";
-        } else {
-            chosen.classList.add("wrong");
-            other.classList.add("correct");
-            result.textContent = "Wrong! ";
+            factBox.textContent = spaceFacts[spIndex];
+            spIndex = (spIndex + 1) % spaceFacts.length;
         }
 
-        chosen.disabled = true;
-        other.disabled = true;
-
-        setTimeout(startScienceGame, 2000);
+        setInterval(updateScienceFact, 3000);
+        updateScienceFact();
     }
 
-    startScienceGame();
-}
+
+    if (document.getElementById("science-optionA") && document.getElementById("science-optionB")) {
+
+        const spaceRealFacts = [
+            "Space is completely silent — sound cannot travel in a vacuum.",
+            "Mars has the largest volcano in the solar system, Olympus Mons.",
+            "The Sun makes up 99.8% of all mass in our solar system.",
+            "There are more trees on Earth than stars in the Milky Way."
+        ];
+
+        const spaceFakeFacts = [
+            "Astronauts grow a new tooth for every year spent in space.",
+            "The Moon glows because it has a giant lightbulb inside.",
+            "Saturn's rings are made of frozen pancakes.",
+            "Black holes sneeze every 12 minutes."
+        ];
+
+        function startScienceGame() {
+            const A = document.getElementById("science-optionA");
+            const B = document.getElementById("science-optionB");
+            const result = document.getElementById("science-game-result");
+
+            if (!A || !B) return;
+
+            A.className = "fact-btn";
+            B.className = "fact-btn";
+            result.textContent = "";
+
+            const real = spaceRealFacts[Math.floor(Math.random() * spaceRealFacts.length)];
+            const fake = spaceFakeFacts[Math.floor(Math.random() * spaceFakeFacts.length)];
+            const realOnA = Math.random() < 0.5;
+
+            A.textContent = realOnA ? real : fake;
+            B.textContent = realOnA ? fake : real;
+
+            A.disabled = false;
+            B.disabled = false;
+
+            A.onclick = () => checkScience(realOnA, A, B);
+            B.onclick = () => checkScience(!realOnA, B, A);
+        }
+
+        function checkScience(correct, chosen, other) {
+            const result = document.getElementById("science-game-result");
+
+            if (correct) {
+                chosen.classList.add("correct");
+                result.textContent = "Correct! ";
+            } else {
+                chosen.classList.add("wrong");
+                other.classList.add("correct");
+                result.textContent = "Wrong! ";
+            }
+
+            chosen.disabled = true;
+            other.disabled = true;
+
+            setTimeout(startScienceGame, 2000);
+        }
+
+        startScienceGame();
+    }
 
 
     /* -----------------------------
